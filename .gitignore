@@ -1,0 +1,23 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# EF Core Migrations snapshot
+*Migrations/*.Designer.cs
+
+# Secrets
+*.db
+*.exe
+*.dll
