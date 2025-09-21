@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BudgetTracking.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+545bd7f30f8fcc074af2dcb822f8ffb7393e94fa")]
 [assembly: System.Reflection.AssemblyProductAttribute("BudgetTracking.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BudgetTracking.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
