@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BudgetTracking.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4366b5335c2b1acf355e5e31562e1c68258c9902")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85b576684e157b6d558955a3aaa8ccb913191b6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BudgetTracking.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BudgetTracking.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

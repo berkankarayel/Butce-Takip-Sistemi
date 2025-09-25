@@ -1,13 +1,15 @@
 using BudgetTracking.Application.Interfaces;
-using BudgetTracking.Application.Services; // AuthService burada kalıyor
+using BudgetTracking.Application.Services;
 using BudgetTracking.Domain.Entities;
 using BudgetTracking.Infrastructure.Data;
-using BudgetTracking.Infrastructure.Services; // ✅ ExpenseService ve IncomeService buradan gelecek
+using BudgetTracking.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +22,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
+
+// 🔴 Varsayılan claim eşlemelerini temizle (sub -> nameidentifier karışmasın)
+JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
 // 2.2) JWT Authentication
 builder.Services.AddAuthentication(options =>
@@ -38,14 +43,18 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+
+        // ✅ nameidentifier ve role tiplerini açıkça belirt
+        NameClaimType = ClaimTypes.NameIdentifier,
+        RoleClaimType = ClaimTypes.Role
     };
 });
 
 // 3) Servis katmanı bağımlılıkları
-builder.Services.AddScoped<IAuthService, AuthService>(); // Application’da
-builder.Services.AddScoped<IExpenseService, ExpenseService>(); // Infrastructure’da
-builder.Services.AddScoped<IIncomeService, IncomeService>();   // Infrastructure’da
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IExpenseService, ExpenseService>();
+builder.Services.AddScoped<IIncomeService, IncomeService>();
 
 // 4) AutoMapper
 builder.Services.AddAutoMapper(typeof(BudgetTracking.Application.Profiles.MappingProfile).Assembly);
@@ -57,7 +66,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "BudgetTracking.Api", Version = "v1" });
 
-    // 🔑 JWT Authentication ekle
+    // 🔑 JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -65,7 +74,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "JWT Authorization header kullanın. \r\n\r\n 'Bearer {token}' şeklinde girin."
+        Description = "JWT Authorization header: 'Bearer {token}'"
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -73,11 +82,7 @@ builder.Services.AddSwaggerGen(c =>
         {
             new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
             },
             Array.Empty<string>()
         }
@@ -95,12 +100,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication();  // ✅ önce kimlik doğrulama
-app.UseAuthorization();   // ✅ sonra yetkilendirme
+app.UseAuthentication();
+app.UseAuthorization();
 
-app.MapControllers();     // ✅ controller bazlı endpointler aktif
+app.MapControllers();
 
-// 7) Varsayılan roller ve admin kullanıcı seed edilsin
+// 7) Varsayılan roller ve admin kullanıcı seed
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -108,22 +113,15 @@ using (var scope = app.Services.CreateScope())
 
     string[] roles = new[] { "Admin", "User" };
 
-    // Roller oluştur
     foreach (var role in roles)
-    {
         if (!await roleManager.RoleExistsAsync(role))
-        {
             await roleManager.CreateAsync(new IdentityRole(role));
-        }
-    }
 
-    // Admin kullanıcı bilgileri
     string adminUserName = "admin";
     string adminEmail = "admin@budget.com";
     string adminPassword = "Admin123!";
     string adminFullName = "Sistem Admin";
 
-    // Admin yoksa ekle
     var existingAdmin = await userManager.FindByNameAsync(adminUserName);
     if (existingAdmin == null)
     {
@@ -137,9 +135,7 @@ using (var scope = app.Services.CreateScope())
 
         var result = await userManager.CreateAsync(admin, adminPassword);
         if (result.Succeeded)
-        {
             await userManager.AddToRoleAsync(admin, "Admin");
-        }
     }
 }
 
