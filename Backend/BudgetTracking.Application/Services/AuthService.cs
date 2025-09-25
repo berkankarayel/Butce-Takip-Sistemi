@@ -12,10 +12,13 @@ namespace BudgetTracking.Application.Services
 {
     public class AuthService : IAuthService
     {
+        // UserManager, kullanıcı yönetimi işlemlerini sağlar.
         private readonly UserManager<AppUser> _userManager;
+        // SignInManager, kullanıcı giriş işlemlerini yönetir.
         private readonly SignInManager<AppUser> _signInManager;
+    
         private readonly IConfiguration _configuration;
-
+// IConfiguration, appsettings.json dosyasındaki ayarları okumamızı sağlar.
         public AuthService(UserManager<AppUser> userManager,
                            SignInManager<AppUser> signInManager,
                            IConfiguration configuration)
