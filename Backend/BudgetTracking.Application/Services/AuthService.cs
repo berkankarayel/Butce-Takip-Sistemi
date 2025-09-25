@@ -12,13 +12,10 @@ namespace BudgetTracking.Application.Services
 {
     public class AuthService : IAuthService
     {
-        // UserManager, kullanıcı yönetimi işlemlerini sağlar.
         private readonly UserManager<AppUser> _userManager;
-        // SignInManager, kullanıcı giriş işlemlerini yönetir.
         private readonly SignInManager<AppUser> _signInManager;
-    
         private readonly IConfiguration _configuration;
-// IConfiguration, appsettings.json dosyasındaki ayarları okumamızı sağlar.
+
         public AuthService(UserManager<AppUser> userManager,
                            SignInManager<AppUser> signInManager,
                            IConfiguration configuration)
@@ -66,9 +63,9 @@ namespace BudgetTracking.Application.Services
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id),  // ✅ GUID Id
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.NameIdentifier, user.Id),   // ✅ GUID Id
                 new Claim("fullname", user.FullName ?? string.Empty)
             };
 
@@ -86,7 +83,7 @@ namespace BudgetTracking.Application.Services
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpireMinutes"])),
+                expires: DateTime.UtcNow.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpireMinutes"])),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

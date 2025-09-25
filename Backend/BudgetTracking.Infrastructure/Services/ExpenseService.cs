@@ -20,24 +20,29 @@ namespace BudgetTracking.Infrastructure.Services
             _mapper = mapper;
         }
 
-        // Yeni harcama ekle
+        // 📌 Yeni harcama ekle
         public async Task<int> CreateAsync(string userId, ExpenseCreateDto dto)
         {
-            var entity = new Expense
+            Console.WriteLine($"[DEBUG] Expense.CreateAsync çağrıldı. UserId = {userId}");
+
+            var expense = new Expense
             {
-                UserId = userId,
                 CategoryId = dto.CategoryId,
                 Amount = dto.Amount,
                 Description = dto.Description,
-                Date = dto.Date
+                Date = dto.Date,
+                UserId = userId
             };
 
-            _db.Expenses.Add(entity);
+            _db.Expenses.Add(expense);
             await _db.SaveChangesAsync();
-            return entity.Id;
+
+            Console.WriteLine($"[DEBUG] Expense eklendi. Yeni Id = {expense.Id}");
+
+            return expense.Id;
         }
 
-        // Harcama güncelle
+        // 📌 Harcama güncelle
         public async Task UpdateAsync(string userId, int id, ExpenseUpdateDto dto)
         {
             var entity = await _db.Expenses
@@ -54,7 +59,7 @@ namespace BudgetTracking.Infrastructure.Services
             await _db.SaveChangesAsync();
         }
 
-        // Harcama sil
+        // 📌 Harcama sil
         public async Task DeleteAsync(string userId, int id)
         {
             var entity = await _db.Expenses
@@ -66,7 +71,7 @@ namespace BudgetTracking.Infrastructure.Services
             await _db.SaveChangesAsync();
         }
 
-        // Tek harcama getir
+        // 📌 Tek harcama getir
         public async Task<ExpenseListItemDto?> GetByIdAsync(string userId, int id)
         {
             return await _db.Expenses
@@ -76,7 +81,7 @@ namespace BudgetTracking.Infrastructure.Services
                 .FirstOrDefaultAsync();
         }
 
-        // Listeleme & filtreleme
+        // 📌 Listeleme & filtreleme
         public async Task<PagedResult<ExpenseListItemDto>> QueryAsync(string userId, ExpenseQueryDto query)
         {
             var q = _db.Expenses
