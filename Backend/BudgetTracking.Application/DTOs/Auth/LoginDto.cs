@@ -1,3 +1,4 @@
+// validasyon yapmamızı sağlar. 
 using System.ComponentModel.DataAnnotations;
 
 namespace BudgetTracking.Application.DTOs.Auth

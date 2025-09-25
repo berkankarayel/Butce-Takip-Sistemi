@@ -1,13 +1,15 @@
 using BudgetTracking.Application.Interfaces;
-using BudgetTracking.Application.Services;
+using BudgetTracking.Application.Services; // AuthService burada kalıyor
 using BudgetTracking.Domain.Entities;
 using BudgetTracking.Infrastructure.Data;
+using BudgetTracking.Infrastructure.Services; // ✅ ExpenseService ve IncomeService buradan gelecek
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.OpenApi.Models;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // 1) PostgreSQL bağlantısı
@@ -41,9 +43,14 @@ builder.Services.AddAuthentication(options =>
 });
 
 // 3) Servis katmanı bağımlılıkları
-builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IAuthService, AuthService>(); // Application’da
+builder.Services.AddScoped<IExpenseService, ExpenseService>(); // Infrastructure’da
+builder.Services.AddScoped<IIncomeService, IncomeService>();   // Infrastructure’da
 
-// 4) Controller & Swagger
+// 4) AutoMapper
+builder.Services.AddAutoMapper(typeof(BudgetTracking.Application.Profiles.MappingProfile).Assembly);
+
+// 5) Controller & Swagger
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -79,7 +86,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// 5) Middleware pipeline
+// 6) Middleware pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -93,8 +100,7 @@ app.UseAuthorization();   // ✅ sonra yetkilendirme
 
 app.MapControllers();     // ✅ controller bazlı endpointler aktif
 
-// 6) Varsayılan roller seed edilsin
-// 6) Varsayılan roller ve admin kullanıcı seed edilsin
+// 7) Varsayılan roller ve admin kullanıcı seed edilsin
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -136,6 +142,5 @@ using (var scope = app.Services.CreateScope())
         }
     }
 }
-
 
 app.Run();
