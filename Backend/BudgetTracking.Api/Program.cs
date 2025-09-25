@@ -55,7 +55,8 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IExpenseService, ExpenseService>();
 builder.Services.AddScoped<IIncomeService, IncomeService>();
-
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 // 4) AutoMapper
 builder.Services.AddAutoMapper(typeof(BudgetTracking.Application.Profiles.MappingProfile).Assembly);
 
