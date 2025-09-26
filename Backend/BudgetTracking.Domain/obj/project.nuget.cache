@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D5zHqH6Xj/Y=",
+  "dgSpecHash": "lt3wgSq+R8E=",
   "success": true,
-  "projectFilePath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
+  "projectFilePath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\berka\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.20\\microsoft.aspnetcore.cryptography.internal.8.0.20.nupkg.sha512",
     "C:\\Users\\berka\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.20\\microsoft.aspnetcore.cryptography.keyderivation.8.0.20.nupkg.sha512",

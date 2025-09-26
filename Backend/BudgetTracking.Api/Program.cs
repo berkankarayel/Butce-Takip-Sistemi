@@ -57,8 +57,21 @@ builder.Services.AddScoped<IExpenseService, ExpenseService>();
 builder.Services.AddScoped<IIncomeService, IncomeService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
+
 // 4) AutoMapper
 builder.Services.AddAutoMapper(typeof(BudgetTracking.Application.Profiles.MappingProfile).Assembly);
+
+// ✅ 4.1) CORS ekle
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") // Angular dev server
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 
 // 5) Controller & Swagger
 builder.Services.AddControllers();
@@ -100,6 +113,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// ✅ CORS aktif et
+app.UseCors("AllowFrontend");
 
 app.UseAuthentication();
 app.UseAuthorization();

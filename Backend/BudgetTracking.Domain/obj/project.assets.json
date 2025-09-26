@@ -821,11 +821,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
       "projectName": "BudgetTracking.Domain",
-      "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
+      "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
       "packagesPath": "C:\\Users\\berka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\obj\\",
+      "outputPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj": {}
+    "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj": {
+    "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj",
+        "projectUniqueName": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj",
         "projectName": "BudgetTracking.Application",
-        "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj",
+        "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Application\\BudgetTracking.Application.csproj",
         "packagesPath": "C:\\Users\\berka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Application\\obj\\",
+        "outputPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj": {
-                "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj"
+              "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj": {
+                "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj"
               }
             }
           }
@@ -92,14 +92,14 @@
         }
       }
     },
-    "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj": {
+    "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
         "projectName": "BudgetTracking.Domain",
-        "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
+        "projectPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\BudgetTracking.Domain.csproj",
         "packagesPath": "C:\\Users\\berka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Sistemi\\Backend\\BudgetTracking.Domain\\obj\\",
+        "outputPath": "C:\\Users\\berka\\OneDrive\\Masaüstü\\Bütçe Takip Yneni\\Butce-Takip-Sistemi\\Backend\\BudgetTracking.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
