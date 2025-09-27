@@ -1,0 +1,46 @@
+<div class="container-fluid vh-100">
+  <div class="row h-100">
+    
+    <!-- Sol taraf -->
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-white bg-primary p-5">
+      <h1 class="mb-4 text-center">YAZILIM TAKİP SİSTEMİNE HOŞGELDİNİZ</h1>
+      <p class="mb-4 text-center">
+        10.000’den fazla kullanıcının yer aldığı topluluğa katıl, yeni şeyler öğren.
+      </p>
+   
+    </div>
+
+    <!-- Sağ taraf -->
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center bg-light p-5">
+      <h3 class="mb-4">BİZİMLE OL!</h3>
+
+   <form class="w-75" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+      <input type="text" class="form-control rounded-pill" formControlName="userName" placeholder="E-posta veya Kullanıcı Adı" />
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-lock"></i></span>
+      <input type="password" class="form-control rounded-pill" formControlName="password" placeholder="Şifre" />
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100 rounded-pill" [disabled]="loading">
+    <span *ngIf="!loading">Giriş Yap</span>
+    <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+  </button>
+
+  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+</form>
+
+
+      <p class="mt-4">
+        Hesabın yok mu? <a href="#" class="text-primary fw-bold">Kayıt Ol</a>
+      </p>
+    </div>
+  </div>
+</div>

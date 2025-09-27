@@ -1,0 +1,10 @@
+input.form-control {
+  padding: 12px 15px;
+  border-radius: 50px; /* oval */
+}
+
+button.btn {
+  border-radius: 50px; /* oval buton */
+  padding: 10px;
+  font-weight: 500;
+}
